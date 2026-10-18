@@ -1,0 +1,7 @@
+# macOS
+.DS_Store
+
+# Local working files that don't belong in the site repo
+Claude outputs/
+Design Skill.md
+*.zip

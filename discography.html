@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discography — Smile Sessions</title>
+<meta name="description" content="Reference the playlists curated by Smile Sessions.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🙂</text></svg>">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">🙂</span> Smile Sessions
+    </a>
+    <div class="nav-links">
+      <a href="index.html" data-page="index.html">Home</a>
+      <a href="discography.html" data-page="discography.html">Discography</a>
+      <a href="social.html" data-page="social.html">Social Media</a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- Page intro -->
+  <section class="hero" style="padding: 64px 0 56px;">
+    <div class="container">
+      <span class="eyebrow">The discography</span>
+      <h1 style="max-width: 20ch;">Playlists curated by Smile Sessions</h1>
+      <p class="hero-sub">
+        Every playlist below is put together and maintained by Smile Sessions. Filter by
+        mood, or scroll through all of them.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 32px;">
+    <div class="container">
+
+      <div class="filter-bar" id="filter-bar">
+        <!-- Filter chips are generated automatically from js/playlists-data.js -->
+      </div>
+
+      <div class="mood-grid" id="playlist-grid">
+        <!-- Playlist cards are generated automatically from js/playlists-data.js -->
+      </div>
+
+      <!-- <p class="callout" style="margin-top: 32px;">
+        <strong>Note for the Smile Sessions team:</strong> these playlists are pulled from
+        <code>js/playlists-data.js</code>. To add a new playlist or update a link, open that
+        file and edit the list — this page updates automatically, no HTML editing required.
+      </p> -->
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top: none; padding-top: 0; align-items: center;">
+      <a href="index.html" class="logo" style="color:#fff;">
+        <span class="logo-mark">🙂</span> Smile Sessions
+      </a>
+      <div style="display:flex; gap: 24px;">
+        <a href="index.html">Home</a>
+        <a href="discography.html">Discography</a>
+        <a href="social.html">Social Media</a>
+      </div>
+      <span>© 2026 Smile Sessions</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/playlists-data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
