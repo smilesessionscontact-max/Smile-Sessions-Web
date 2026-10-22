@@ -30,7 +30,7 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
 body {
   margin: 0;
@@ -245,6 +245,7 @@ p { margin: 0 0 1em 0; }
 
 .hero-art {
   position: relative;
+  width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: var(--radius-lg);
   /* deep azure at top fading to soft horizon blue at bottom, like a clear sky */
@@ -256,22 +257,27 @@ p { margin: 0 0 1em 0; }
 }
 .hero-art .pulse {
   position: absolute;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   border: 3px solid rgba(255,255,255,0.5);
+  opacity: 0;
   animation: pulse 3.5s ease-out infinite;
 }
 .hero-art .pulse:nth-child(2) { animation-delay: 1.2s; }
 .hero-art .pulse:nth-child(3) { animation-delay: 2.4s; }
 @keyframes pulse {
-  0% { width: 60px; height: 60px; opacity: 0.9; }
-  100% { width: 320px; height: 320px; opacity: 0; }
+  0% { transform: scale(0.2); opacity: 0.9; }
+  100% { transform: scale(0.95); opacity: 0; }
 }
-.hero-art .smiley { font-size: 5rem; z-index: 2; }
+.hero-art .smiley { font-size: clamp(3.5rem, 18vw, 5rem); z-index: 2; }
 
 @media (max-width: 860px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .hero-art { max-width: 320px; margin: 0 auto; }
+  .hero-art { max-width: 300px; margin: 0 auto; }
 }
+
+.hero.hero-page { padding: 64px 0 56px; }
 
 /* ---------- Section basics ---------- */
 .section { padding: 64px 0 88px; }
@@ -434,3 +440,59 @@ p { margin: 0 0 1em 0; }
 
 /* ---------- Utility ---------- */
 .text-center { text-align: center; }
+
+
+/* ==========================================================================
+   Phones (<= 600px): tighter spacing, full-width buttons, larger tap targets
+   ========================================================================== */
+@media (max-width: 600px) {
+  .container { padding: 0 20px; }
+
+  /* Header */
+  .nav { padding: 10px 20px; }
+  .logo { font-size: 1.1rem; gap: 8px; }
+  .logo-mark { width: 32px; height: 32px; font-size: 1rem; }
+  .nav-toggle { padding: 12px; margin-right: -12px; }   /* ~48px tap target */
+  .nav-links { padding: 8px 20px 20px; }
+  .nav-links a { padding: 12px 0; font-size: 1.05rem; }
+  .nav-links a.active::after { bottom: 4px; width: 32px; right: auto; }
+
+  /* Hero */
+  .hero { padding: 36px 0 52px; }
+  .hero.hero-page { padding: 36px 0 32px; }
+  .hero-grid { gap: 36px; }
+  .hero h1 { font-size: clamp(1.9rem, 8.4vw, 2.4rem); }
+  .hero-sub { font-size: 1.02rem; max-width: none; }
+  .eyebrow { font-size: 0.7rem; letter-spacing: 0.1em; padding: 6px 12px; margin-bottom: 14px; }
+  .hero-actions { flex-direction: column; gap: 12px; margin-top: 24px; }
+  .hero-actions .btn { width: 100%; padding: 16px 24px; }
+  .hero-art { max-width: 240px; }
+
+  /* Sections */
+  .section { padding: 44px 0 60px; }
+  .section-head { margin-bottom: 28px; }
+  .section-head p { font-size: 1rem; }
+  .text-center .btn { width: 100%; white-space: normal; }
+
+  /* Discography */
+  .filter-bar { gap: 8px; margin-bottom: 28px; }
+  .chip { padding: 10px 16px; font-size: 0.85rem; }
+  .mood-grid { gap: 18px; }
+  .mood-card { padding: 24px; }
+  .mood-links { gap: 8px; }
+  .btn-sm { padding: 11px 18px; }
+
+  /* Social */
+  .social-item { padding: 14px 16px; gap: 14px; }
+  .social-icon { width: 46px; height: 46px; font-size: 1.25rem; }
+  .social-text strong { font-size: 1rem; }
+
+  /* Footer */
+  .site-footer { padding: 32px 0; }
+  .footer-bottom { flex-direction: column; align-items: flex-start !important; gap: 18px; }
+}
+
+/* Hover lift only where a real hover exists, so taps on phones don't leave buttons stuck raised */
+@media (hover: none) {
+  .btn:hover, .social-item:hover { transform: none; }
+}
